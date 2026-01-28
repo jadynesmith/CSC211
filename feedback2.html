@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="uft-8">
+        <title>
+            Feedback Form
+        </title>
+    </head>
+    <body>
+        <div>
+            <p>
+                <b>
+                    Please complete this form to submit your feedback:
+                </b>
+            </p>
+
+            <form action="handle_form.php" method="post">
+                <p>
+                    <select name="title" required>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Ms.">Ms.</option>
+                    </select>
+
+                    <b>
+                        First Name:
+                    </b>
+                    
+                    <input type="text" name="first_name" size="20" required>
+
+                    <b>
+                        Last Name:
+                    </b>
+
+                    <input type="text" name="last_name" size="20" required>
+                </p>
+                <p>
+                    <b>
+                        Email Address:
+                    </b>
+
+                    <br>
+
+                    <input type="email" size="78" required>
+                </p>
+                <p>
+                    <b>
+                        Response: 
+                    </b>
+
+                    This is...
+                    
+                    <br>
+
+                    <input type="radio" name="response" value="excellent" required>
+                    excellent
+
+                    <br>
+
+                    <input type="radio" name="response" value="okay">
+                    okay
+
+                    <br>
+
+                    <input type="radio" name="response" value="boring">
+                    boring
+                </p>
+                <p>
+                    <b>
+                        Comments:
+                    </b>
+
+                    <br>
+
+                    <textarea name="comments" rows="5" cols="77" required></textarea>
+                </p>
+                <input type="submit" name="submit" value="Send My Feedback">
+            </form>
+        </div>
+    </body>
+</html>
