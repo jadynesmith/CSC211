@@ -10,6 +10,9 @@
         <?php
             // receives title, first_name, last_name, response, & comments from feedback2.html in $_POST
 
+            // displays error messages on website
+            ini_set('display_errors', 1);
+
             // declaration of shorthand variables
             $title = $_POST['title'];
             $first_name = $_POST['first_name'];
