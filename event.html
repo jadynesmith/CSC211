@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Add an Event
+        </title>
+    </head>
+    <body>
+        <div>
+            <form action="event.php" method="post">
+                <!-- event name textbox -->
+                <p>
+                    Event Name: <input type="text" name="name" size="30">
+                </p>
+
+                <!-- event day checkboxes -->
+                <p>
+                    Event Days:
+
+                    <input type="checkbox" name="days[]" value="Monday"> Mon
+                    <input type="checkbox" name="days[]" value="Tuesday"> Tue
+                    <input type="checkbox" name="days[]" value="Wednesday"> Wed
+                    <input type="checkbox" name="days[]" value="Thursday"> Thu
+                    <input type="checkbox" name="days[]" value="Friday"> Fri
+                    <input type="checkbox" name="days[]" value="Saturday"> Sat
+                    <input type="checkbox" name="days[]" value="Sunday"> Sun
+                </p>
+
+                <!-- submit button -->
+                <input type="submit" name="submit" value="Add the Event!">
+            </form>
+        </div>
+    </body>
+</html>
