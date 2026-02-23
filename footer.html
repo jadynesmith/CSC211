@@ -4,6 +4,16 @@
             <p>
                 Design uses <a href="http://concisecss.com/">Concise CSS Framework</a>
             </p>
+
+            <p class="float-right">
+                <?php
+                    // set timezone
+                    date_default_timezone_set("America/Phoenix");
+
+                    // print date & time
+                    print date("l, F j, Y - g:i a");
+                ?>
+            </p>
         </footer>
     </body>
 </html>
