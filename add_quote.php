@@ -19,7 +19,7 @@
                     if (is_writable($file))
                     {
                         // add quotes to file
-                        file_put_contents($file, $_POST["quote"] . PHP_EOL, FILE_APPEND);
+                        file_put_contents($file, $_POST["quote"] . PHP_EOL, FILE_APPEND | LOCK_EX);
 
                         // print quote storage confirmation message
                         print "<p>Your quotation has been stored.</p>";
