@@ -9,7 +9,7 @@
     <body>
         <?php
             // attempt database connection
-            if ($dbc = mysqli_connect("localhost", "root", "MyCSC211!", "myblog"))
+            if ($dbc = @mysqli_connect("localhost", "root", "MyCSC211!", "myblog"))
             {
                 // print success message
                 print "<p>Successfully connected to the database!</p>";
@@ -20,7 +20,7 @@
             else
             {
                 // print error message
-                print "<p style='color: red;'>Could not connect to the database.</p>";
+                print "<p style='color: red;'>Could not connect to the database:<br>" . mysqli_connect_error() . ".</p>";
             }
         ?>
     </body>
