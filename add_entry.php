@@ -15,15 +15,21 @@
             // determine if form has already been completed
             if ($_SERVER["REQUEST_METHOD"] == "POST")
             {
+                // connect to database
+                $dbc = @mysqli_connect("localhost", "root", "MyCSC211!", "myblog");
+
+                // call method to set character set
+                mysqli_set_charset($dbc, "utf8");
+
                 // define & initialize flag
                 $problem = FALSE;
 
                 // determine if form items have been completed
                 if (!empty($_POST["title"]) && !empty($_POST["entry"]))
                 {
-                    // trim & string tage from form items
-                    $title = trim(strip_tags($_POST["title"]));
-                    $entry = trim(strip_tags($_POST["entry"]));
+                    // trim, strip tags, & secure form items
+                    $title = mysqli_real_escape_string($dbc, trim(strip_tags($_POST["title"])));
+                    $entry = mysqli_real_escape_string($dbc, trim(strip_tags($_POST["entry"])));
                 }
                 else
                 {
