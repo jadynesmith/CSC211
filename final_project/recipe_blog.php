@@ -117,15 +117,16 @@
                 // 1ST STEP: CHECK IF FORM HAS BEEN SUBMITTED OR DELETED
 
                 // determine if form has been deleted
-                if (isset($_POST["delete"]))
+                if (isset($_POST["delete"]) && isset($_POST["delete_id"]))
                 {
                     // define & initialize delete id
-                    $delete_id = intval($_POST["delete_id"]);
+                    $delete_id = mysqli_real_escape_string($dbc, $_POST["delete_id"]);
 
                     // define & initialize delete query
                     $delete_query = "DELETE FROM recipes
-                                    WHERE recipe_id = $delete_id
-                                    AND creator = '$full_name'";
+                                    WHERE recipe_id = '$delete_id'
+                                    AND creator = '$full_name'
+                                    LIMIT 1";
                     
                     // attempt delete query
                     if (mysqli_query($dbc, $delete_query))
@@ -352,7 +353,19 @@
                             // display recipe
                             print "<hr class='post-divider'>";
                             print "<h4>" . htmlspecialchars($row["title"]) . " - " . htmlspecialchars($row["creator"]) . "</h4>";
-                            print "<div class='box'>" . htmlspecialchars($row["category"]) . " (" . htmlspecialchars($row["tags"]) . ")</div>";
+
+                            // determine if tags are set
+                            if ($row["tags"])
+                            {
+                                // print with tags
+                                print "<div class='box'>" . htmlspecialchars($row["category"]) . " (" . htmlspecialchars($row["tags"]) . ")</div>";
+                            }
+                            else
+                            {
+                                // print without tags
+                                print "<div class='box'>" . htmlspecialchars($row["category"]) . "</div>";
+                            }
+
                             print "<div class='box'>Ingredients: " . htmlspecialchars($row["ingredients"]) . "</div>";
                             print "<div class='box'>Directions: " . htmlspecialchars($row["directions"]) . "</div>";
                             print "<div class='third-box'><p>Prep Time:</p><p>Cook Time:</p><p>Total Time:</p><p>" . htmlspecialchars($row["prep_time"]) . " minutes</p><p>" . htmlspecialchars($row["cook_time"]) . " minutes</p><p>" . htmlspecialchars($row["total_time"]) . " minutes</p></div>";
